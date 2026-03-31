@@ -1,7 +1,9 @@
-// Saves names and numbers to a CSV file, checking for NULL
-//
-// This is the safe version — always check that fopen succeeded
-// before writing to the file.
+/*
+WEEK 1 — TASK 4 (File I/O - CSV Phonebook)
+
+Goal:
+Learn how to append data to a CSV file and handle file pointers safely.
+*/
 
 #include <cs50.h>
 #include <stdio.h>
@@ -10,10 +12,12 @@
 int main(void)
 {
     // TODO: Open "phonebook.csv" in append mode "a"
-    FILE *file = fopen(/* ??? */, /* ??? */);
+    // "a" mode opens the file for writing at the end of the file (appending)
+    FILE *file = fopen("phonebook.csv", "a");
 
     // TODO: Check if fopen returned NULL and return 1 if so
-    if (/* ??? */)
+    // Always check if the file was successfully opened to avoid crashes
+    if (file == NULL)
     {
         return 1;
     }
@@ -23,10 +27,12 @@ int main(void)
     char *number = get_string("Number: ");
 
     // TODO: Write name and number to the file as "name,number\n"
-    fprintf(file, /* ??? */, name, number);
+    // We use a comma to separate values for CSV format compatibility
+    fprintf(file, "%s,%s\n", name, number);
 
     // TODO: Close the file
-    /* ??? */
+    // Closing the file ensures all data is physically written to the disk
+    fclose(file);
 
     return 0;
 }
