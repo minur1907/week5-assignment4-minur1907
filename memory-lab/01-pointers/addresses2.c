@@ -1,6 +1,13 @@
-// Stores and prints an integer's address
-// A pointer is a variable that holds a memory address.
-// int *p means "p is a pointer to an int".
+/*
+WEEK 1 — TASK 1 (Storing a Pointer)
+
+Goal:
+Learn how to store a memory address in a pointer variable.
+
+Task:
+1. Declare a pointer p and store the address of n in it.
+2. Print the address stored in p using the %p format specifier.
+*/
 
 #include <stdio.h>
 
@@ -9,8 +16,10 @@ int main(void)
     int n = 50;
 
     // TODO: Declare a pointer p that stores the address of n
-    int *p = /* ??? */;
+    // Use & operator to get the address
+    int *p = &n;
 
     // TODO: Print the address stored in p using %p
-    printf("%p\n", /* ??? */);
+    // p now contains the address, so we pass p directly
+    printf("%p\n", p);
 }
