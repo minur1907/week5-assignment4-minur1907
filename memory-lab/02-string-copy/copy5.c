@@ -1,11 +1,9 @@
-// Capitalizes a copy of a string — the SAFE way
-//
-// This is the production-quality version:
-//   - Check if get_string returned NULL
-//   - Check if malloc returned NULL
-//   - Use strcpy instead of a manual loop
-//   - Check length before capitalizing
-//   - Free allocated memory when done
+/*
+WEEK 1 — TASK 2 (String Copying - The SAFE Way)
+
+Goal:
+Practice robust memory management by checking for NULL and using standard libraries.
+*/
 
 #include <cs50.h>
 #include <ctype.h>
@@ -19,7 +17,8 @@ int main(void)
     char *s = get_string("s: ");
 
     // TODO: Check if s is NULL and return 1 if so
-    if (/* ??? */)
+    // This prevents the program from crashing if get_string fails
+    if (s == NULL)
     {
         return 1;
     }
@@ -28,18 +27,20 @@ int main(void)
     char *t = malloc(strlen(s) + 1);
 
     // TODO: Check if t is NULL and return 1 if so
-    if (/* ??? */)
+    // Always check if malloc successfully allocated memory
+    if (t == NULL)
     {
         return 1;
     }
 
     // TODO: Copy s into t using strcpy
-    strcpy(/* ??? */, /* ??? */);
+    // strcpy is faster and safer than a manual loop
+    strcpy(t, s);
 
     // TODO: Capitalize t[0] only if the string is not empty
     if (strlen(t) > 0)
     {
-        t[0] = toupper(/* ??? */);
+        t[0] = toupper(t[0]);
     }
 
     // Print both strings
@@ -47,7 +48,8 @@ int main(void)
     printf("t: %s\n", t);
 
     // TODO: Free the memory you allocated
-    /* ??? */
+    // Rule: Every malloc must have a corresponding free
+    free(t);
 
     return 0;
 }
