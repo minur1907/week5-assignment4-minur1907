@@ -1,6 +1,13 @@
-// Stores and prints an integer via its address
-// The * operator (dereference) lets you follow a pointer to get the value it points to.
-// If p holds the address of n, then *p gives you the value of n.
+/*
+WEEK 1 — TASK 1 (Dereferencing a Pointer)
+
+Goal:
+Learn how to use the dereference operator (*) to access the value at a specific memory address.
+
+Task:
+1. Print the value of n by dereferencing p using *p.
+2. Use the %i format specifier since the final value is an integer.
+*/
 
 #include <stdio.h>
 
@@ -10,5 +17,6 @@ int main(void)
     int *p = &n;
 
     // TODO: Print the value of n by dereferencing p (use *p)
-    printf("%i\n", /* ??? */);
+    // The * operator follows the pointer to the actual value
+    printf("%i\n", *p);
 }
