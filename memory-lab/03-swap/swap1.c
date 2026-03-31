@@ -1,12 +1,15 @@
-// Swaps two integers using pointers
-//
-// Instead of passing values, we pass the ADDRESSES of x and y.
-// The function can then follow those addresses and modify the real variables.
+/*
+WEEK 1 — TASK 3 (Swapping - The RIGHT Way)
+
+Goal:
+Learn how to use pointers to modify variables outside of a function's local scope.
+*/
 
 #include <stdio.h>
 
 // TODO: Update the signature — parameters should be int* (pointers to int)
-void swap(int a, int b);
+// We use * to indicate these are addresses, not plain integers.
+void swap(int *a, int *b);
 
 int main(void)
 {
@@ -16,16 +19,18 @@ int main(void)
     printf("x is %i, y is %i\n", x, y);
 
     // TODO: Pass the addresses of x and y using &
-    swap(/* ??? */, /* ??? */);
+    // The & operator provides the "map" to where x and y live.
+    swap(&x, &y);
 
     printf("x is %i, y is %i\n", x, y);
 }
 
 // TODO: Update the signature and body to use pointers
-void swap(int a, int b)
+void swap(int *a, int *b)
 {
     // TODO: Use *a and *b to swap the actual values in memory
-    int tmp = /* ??? */;
-    /* ??? */ = /* ??? */;
-    /* ??? */ = tmp;
+    // *a means "go to the address stored in a and get the value"
+    int tmp = *a;
+    *a = *b;
+    *b = tmp;
 }
